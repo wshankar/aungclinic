@@ -37,14 +37,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function questions()
+    public function patients()
     {
-       return $this->hasMany(Question::class);
+       return $this->hasMany(Patient::class);
     }
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = str_slug($value);
-    }
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['name'] = $value;
+    //     $this->attributes['slug'] = str_slug($value);
+    // }
 }
