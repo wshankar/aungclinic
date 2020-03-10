@@ -42,5 +42,9 @@ class User extends Authenticatable
        return $this->hasMany(Patient::class);
     }
 
-    
+    public function getUrlAttribute()
+    {
+       //return route("patient.show", $this->id);
+       return '#';
+    }
 }

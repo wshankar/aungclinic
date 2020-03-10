@@ -16,4 +16,14 @@ class Patient extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
+
+    public function getUrlAttribute()
+    {
+       return route("patients.show", $this->id);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->format("d-m-Y");
+    }
 }
