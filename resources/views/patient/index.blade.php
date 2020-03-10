@@ -16,7 +16,7 @@
                           <th>Age</th>
                           <th>Gender</th>
                           <th>Address</th>
-                          <th>Register</th>
+                          <th>Visits</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -26,13 +26,18 @@
 
                         @foreach($patients as $patient)
 
+                            <div class="d-flex flex-column counters">
+                              <div class="visit">
+
+                              </div>
+                            </div>
                             <tr>
                               <td><a href="{{ $patient->user->url }}">{{ $patient->user->name }}</a> </td>
                               <td><a href="{{ $patient->url }}">{{ $patient->name }}</a></td>
                               <td>{{ $patient->age }}</td>
                               <td>{{ $patient->sex }}</td>
                               <td>{{ $patient->address }}</td>
-                              <td>{{ $patient->created_date}}</td>
+                              <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}}</td>
                             </tr>
                         @endforeach
 
