@@ -34,19 +34,20 @@
                         </div> -->
 
                         @foreach($patients as $patient)
-
-                            <div class="d-flex flex-column counters">
-                              <div class="visit">
-
-                              </div>
-                            </div>
                             <tr>
                               <td><a href="{{ $patient->user->url }}">{{ $patient->user->name }}</a> </td>
                               <td><a href="{{ $patient->url }}">{{ $patient->name }}</a></td>
                               <td>{{ $patient->age }}</td>
                               <td>{{ $patient->sex }}</td>
                               <td>{{ $patient->address }}</td>
-                              <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}} <a href="{{ route('patients.edit', $patient->id)}}" class="btn btn-sm btn-outline-info">Edit</a> </td>
+                              <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}}
+                                <a href="{{ route('patients.edit', $patient->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                                <form class="form-delete" action="{{ route('patients.destroy', $patient->id)}}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure?')">Del</button>
+                                </form>
+                               </td>
                             </tr>
                         @endforeach
 
