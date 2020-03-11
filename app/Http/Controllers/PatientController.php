@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\Treatment;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddPatientRequest;
 use App\Policies\PatientPolicy;
@@ -54,6 +55,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
+        
         return view('patient.show', compact('patient'));
     }
 

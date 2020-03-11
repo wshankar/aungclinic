@@ -19,4 +19,14 @@ class Treatment extends Model
             $visit->patient->increment('visits');
         });
     }
+
+    public function getVisitHtmlAttribute()
+    {
+      return \Parsedown::instance()->text($this->treatment);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
 }

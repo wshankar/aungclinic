@@ -19,7 +19,7 @@ class Patient extends Model
 
     public function getUrlAttribute()
     {
-       return route("patients.show", $this->slug);
+       return route("patients.show", $this->id);
     }
 
     public function getCreatedDateAttribute()
