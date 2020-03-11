@@ -12,6 +12,6 @@ $factory->define(App\Patient::class, function (Faker $faker) {
         'age' => rand(1, 80),
         'sex' => $gender,
         'address' => $faker->address,
-        'visits' => rand(0,20)
+        // 'visits' => rand(0,20)
     ];
 });

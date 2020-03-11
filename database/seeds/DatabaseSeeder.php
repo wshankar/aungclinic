@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
             $u->patients()
               ->saveMany(
                     factory(App\Patient::class, rand(1,5))->make()
-                );
+                )->each(function ($p) {
+                   $p->treatments()->saveMany(factory(App\Treatment::class, rand(1,5))->make());
+                });
 
         });
     }

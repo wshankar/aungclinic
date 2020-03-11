@@ -26,4 +26,9 @@ class Patient extends Model
     {
         return $this->created_at->format("d-m-Y");
     }
+
+    public function treatments()
+    {
+        return $this->hasMany(Treatment::class);
+    }
 }
