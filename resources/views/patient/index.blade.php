@@ -5,7 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Patient List</div>
+                <div class="card-header">
+                  <div class="d-flex align-items-center">
+                    <h5>Patient List</h5>
+                    <div class="ml-auto">
+                      <a href="{{ route('patients.create')}}" class="btn btn-outline-secondary">Add New Patient</a>
+                    </div>
+                  </div>
+
+                </div>
 
                 <div class="card-body">
                     <table class="table table-hover table-bordered">
@@ -20,9 +28,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <div class="patination pagination-sm">
+                        <!-- <div class="patination pagination-sm">
                           {{ $patients->links() }}
-                        </div>
+                        </div> -->
 
                         @foreach($patients as $patient)
 

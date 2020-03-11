@@ -26,7 +26,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        $patient = new Patient();
+
+        return view('patient.create',compact('patient'));
     }
 
     /**
