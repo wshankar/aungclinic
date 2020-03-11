@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('patients', 'PatientController');
-// Route::get('/patients/{slug}', 'PatientController@show')->name('patients.show');
+Route::resource('patients.treatment', 'TreatmentController')->only(['store', 'edit', 'update', 'destroy']);
