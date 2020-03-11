@@ -46,7 +46,7 @@
                               <td>{{ $patient->age }}</td>
                               <td>{{ $patient->sex }}</td>
                               <td>{{ $patient->address }}</td>
-                              <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}}</td>
+                              <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}} <a href="{{ route('patients.edit', $patient->id)}}" class="btn btn-sm btn-outline-info">Edit</a> </td>
                             </tr>
                         @endforeach
 

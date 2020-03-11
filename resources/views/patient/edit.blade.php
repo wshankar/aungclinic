@@ -7,15 +7,16 @@
             <div class="card">
                 <div class="card-header">
                   <div class="d-flex align-items-center">
-                    <h5>Add New Patient</h5>
+                    <h5>Edit Patient</h5>
                     <div class="ml-auto">
                       <a href="{{ route('patients.index')}}" class="btn btn-outline-secondary">Back to Patient List</a>
                     </div>
                   </div>
                 </div>
                 <div class="card-body">
-                    <form class="" action="{{ route('patients.store')}}" method="post">
-                      @include('patient._form', ['buttonText' => "Add New Patient"])
+                    <form class="" action="{{ route('patients.update', $patient->id)}}" method="post">
+                      {{ method_field('PUT') }}
+                      @include('patient._form', ['buttonText' => "Update Patient Info"])
                     </form>
                 </div>
             </div>

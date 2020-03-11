@@ -64,7 +64,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patient.edit', compact('patient'));
     }
 
     /**
@@ -74,9 +74,11 @@ class PatientController extends Controller
      * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(AddPatientRequest $request, Patient $patient)
     {
-        //
+          $patient->update($request->only('name', 'age', 'sex', 'address'));
+
+          return redirect()->route('patients.index')->with('success', "Patient Info Updated");
     }
 
     /**
