@@ -18,7 +18,7 @@
                        @csrf
                       <div class="row">
                           <div class="form-group col-md-4">
-                            <input type="text" name="name" id="patient-name" class="form-control {{ $errors->has('title') ? 'is-invalid' : ''}}" placeholder="Name">
+                            <input type="text" name="name" id="patient-name" value="{{ old('name') }}" class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" placeholder="Name">
 
                             @if ($errors->has('name'))
                                 <div class="invalid-feedback">
@@ -27,7 +27,7 @@
                             @endif
                           </div>
                           <div class="form-group col-md-2">
-                            <input type="text" name="age" id="patient-age" class="form-control {{ $errors->has('title') ? 'is-invalid' : ''}}" placeholder="Age">
+                            <input type="text" name="age" id="patient-age" value="{{ old('age') }}" class="form-control {{ $errors->has('age') ? 'is-invalid' : ''}}" placeholder="Age">
 
                             @if ($errors->has('age'))
                                 <div class="invalid-feedback">
@@ -36,7 +36,7 @@
                             @endif
                           </div>
                           <div class="form-group col-md-2">
-                            <input type="text" name="sex" id="patient-sex" class="form-control {{ $errors->has('sex') ? 'is-invalid' : ''}}" placeholder="Gender">
+                            <input type="text" name="sex" id="patient-sex" value="{{ old('sex') }}" class="form-control {{ $errors->has('sex') ? 'is-invalid' : ''}}" placeholder="Gender">
 
                             @if ($errors->has('sex'))
                                 <div class="invalid-feedback">
@@ -45,7 +45,7 @@
                             @endif
                           </div>
                           <div class="form-group col-md-4">
-                            <input type="text" name="address" id="patient-address" class="form-control {{ $errors->has('address') ? 'is-invalid' : ''}}" placeholder="Address">
+                            <input type="text" name="address" id="patient-address" value="{{ old('address') }}" class="form-control {{ $errors->has('address') ? 'is-invalid' : ''}}" placeholder="Address">
 
                             @if ($errors->has('address'))
                                 <div class="invalid-feedback">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddPatientRequest;
 
 class PatientController extends Controller
 {
@@ -37,9 +38,11 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddPatientRequest $request)
     {
-        //
+        $request->user()->patients()->create($request->only('name', 'age', 'sex', 'address'));
+
+        return redirect()->route('patients.index')->with('success', "New Patient Added");
     }
 
     /**

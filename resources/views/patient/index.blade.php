@@ -16,6 +16,7 @@
                 </div>
 
                 <div class="card-body">
+                    @include('layouts._messages')
                     <table class="table table-hover table-bordered">
                       <thead class="thead-dark">
                         <tr>
