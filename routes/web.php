@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('patients', 'PatientController');
+Route::resource('patients', 'PatientController')->except('show');
+Route::get('/patients/{slug}', 'PatientController@show')->name('patients.show');

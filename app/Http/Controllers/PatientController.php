@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddPatientRequest;
+use App\Policies\PatientPolicy;
 
 class PatientController extends Controller
 {
@@ -53,7 +54,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return view('patient.show', compact('patient'));
     }
 
     /**
@@ -64,7 +65,10 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        return view('patient.edit', compact('patient'));
+        if(\Gate::allows('update-patient', $patient)) {
+          return view('patient.edit', compact('patient'));
+        }
+        abort(403, "Access Denied");
     }
 
     /**
