@@ -55,7 +55,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        
+
         return view('patient.show', compact('patient'));
     }
 
@@ -67,10 +67,8 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        if(\Gate::allows('update-patient', $patient)) {
-          return view('patient.edit', compact('patient'));
-        }
-        abort(403, "Access Denied");
+        $this->authorize('update', $patient);
+        return view('patient.edit', compact('patient'));
     }
 
     /**
@@ -95,6 +93,8 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
+        $this->authorize('delete', $patient);
+
         $patient->delete();
 
         return redirect()->route('patients.index')->with('success', "Patient has been Removed");

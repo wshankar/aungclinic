@@ -41,12 +41,16 @@
                               <td>{{ $patient->sex }}</td>
                               <td>{{ $patient->address }}</td>
                               <td><strong>{{ $patient->visits }}</strong> {{ str_plural('visit', $patient->visits)}}
+                              @can('update', $patient)
                                 <a href="{{ route('patients.edit', $patient->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                              @endcan
+                              @can('delete', $patient)
                                 <form class="form-delete" action="{{ route('patients.destroy', $patient->id)}}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure?')">Del</button>
                                 </form>
+                              @endcan
                                </td>
                             </tr>
                         @endforeach

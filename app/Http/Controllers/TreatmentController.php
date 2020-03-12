@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Treatment;
+use App\Patient;
 use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
@@ -15,9 +16,12 @@ class TreatmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Patient $patient, Request $request)
     {
-        //
+        $request->validate([ 'treatment' => 'required', 'fees' => 'required']);
+        $patient->treatments()->create([ 'treatment' => $request->treatment, 'fees' => $request->fees]);
+
+        return back()->with('success', "Treatment has been Saved");
     }
 
     /**
@@ -26,13 +30,13 @@ class TreatmentController extends Controller
      * @param  \App\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-  
+     /*
      * @param  \App\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Treatment $treatment)
+    public function edit(Patient $patient, Treatment $treatment)
     {
-        //
+        return view('treatment.edit', compact('patient', 'treatment'));
     }
 
     /**
@@ -42,9 +46,10 @@ class TreatmentController extends Controller
      * @param  \App\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treatment $treatment)
+    public function update(Request $request, Patient $patient, Treatment $treatment)
     {
-        //
+        $treatment->update($request->validate(['treatment'=> 'required', 'fees'=> 'required']));
+        return redirect()->route('patients.show', $patient->id)->with('success', "Treatment Updated");
     }
 
     /**
@@ -55,6 +60,6 @@ class TreatmentController extends Controller
      */
     public function destroy(Treatment $treatment)
     {
-        //
+
     }
 }

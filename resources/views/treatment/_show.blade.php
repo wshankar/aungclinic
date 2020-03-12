@@ -18,16 +18,26 @@
     <div class="card-header">
       <h4>{{ $patient->visits ." " .str_plural('Previous Record', $patient->visits)}}</h4>
     </div>
+    @include('layouts._messages')
     <div class="card-body">
       @foreach ($visits as $visit)
           <div class="media">
             <div class="media-body">
               <p>{{ $visit->treatment }}</p>
-              <div class="float-left">
-                <span class="text-muted">{{ $visit->fees }} Kyats</span>
-              </div>
-              <div class="float-right">
-                <span class="text-muted">Last Vitsit {{$visit->created_date}}</span>
+              <div class="row">
+                <div class="col-4">
+                  <span class="text-muted">Last Visit {{$visit->created_date}}</span>
+                </div>
+                <div class="col-4">
+                  <span class="text-muted">{{ $visit->fees }} Kyats</span>
+                </div>
+                <div class="col-4">
+                  <a href="{{ route('patients.treatment.edit', [$patient->id,$visit->id ])}}" class="btn btn-sm btn-outline-info">Edit</a>
+                  <form class="form-delete" action="{{ route('patients.treatment.destroy', [$patient->id,$visit->id ])}}" method="post">
+                      @method('DELETE')
+                      @csrf
+                  <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure?')">Delete</button>
+                </div>
               </div>
             </div>
           </div>
